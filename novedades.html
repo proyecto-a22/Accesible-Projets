@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novedades — Proyectos accesibles</title>
+
+<link rel="stylesheet" href="estilos.css">
+
+</head>
+<body>
+
+<main>
+
+<div class="logo">
+¡Proyectos accesibles!
+</div>
+
+<div class="relojbarra">
+  <div id="hora"></div>
+  <div id="fecha"></div>
+</div>
+
+<div id="clima" class="clima">
+Cargando clima...
+</div>
+
+<nav>
+  <button id="menuBtn" aria-expanded="false">
+    Menú contraído
+  </button>
+
+  <ul id="menuLista">
+    <li tabindex="0" onclick="location.href='index.html'">Inicio</li>
+    <li tabindex="0" onclick="location.href='descargas.html'">Descargas</li>
+    <li tabindex="0">Novedades</li>
+    <li tabindex="0" onclick="location.href='contacto.html'">Contacto</li>
+  </ul>
+</nav>
+
+<div class="contenido">
+  <h2>Novedades</h2>
+  <div id="textoNovedades">
+    Cargando novedades...
+  </div>
+</div>
+
+<footer>
+Proyectos accesibles - 2026
+</footer>
+
+</main>
+
+<script>
+// ------------------ AUDIO ------------------
+let audioCtx = null;
+
+function activarAudio(){
+  if(audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+
+function sonido(freq,dur,vol){
+  if(!audioCtx) return;
+  let osc = audioCtx.createOscillator();
+  let gain = audioCtx.createGain();
+  osc.frequency.value = freq;
+  gain.gain.value = vol;
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  setTimeout(()=>osc.stop(),dur);
+}
+
+function clickUI(){
+  sonido(650,50,0.04);
+}
+
+["keydown","keyup","click","touchstart","pointerdown","mouseover"].forEach(ev=>{
+  document.addEventListener(ev,activarAudio,{once:true});
+});
+
+// ------------------ MENÚ ------------------
+let btn = document.getElementById("menuBtn");
+let lista = document.getElementById("menuLista");
+
+btn.onclick = ()=>{
+  let abierto = btn.getAttribute("aria-expanded") === "true";
+  if(abierto){
+    lista.style.display="none";
+    btn.textContent="Menú contraído";
+    btn.setAttribute("aria-expanded","false");
+  } else {
+    lista.style.display="block";
+    btn.textContent="Menú expandido";
+    btn.setAttribute("aria-expanded","true");
+  }
+  clickUI();
+};
+
+// ------------------ RELOJ (solo hora y minuto) ------------------
+function actualizarReloj(){
+  let ahora = new Date();
+  let h = String(ahora.getHours()).padStart(2,"0");
+  let m = String(ahora.getMinutes()).padStart(2,"0");
+  document.getElementById("hora").textContent = "Hora: "+h+":"+m;
+  document.getElementById("fecha").textContent = ahora.toLocaleDateString();
+}
+setInterval(actualizarReloj,60000);
+actualizarReloj();
+
+// ------------------ CLIMA ------------------
+fetch("https://wttr.in/?format=3")
+.then(r=>r.text())
+.then(t=>{
+  document.getElementById("clima").textContent=t;
+})
+.catch(()=>{
+  document.getElementById("clima").textContent="Clima no disponible";
+});
+
+// ------------------ CARGAR TXT DE NOVEDADES ------------------
+fetch('Text-novedades.txt')
+.then(resp => resp.text())
+.then(texto => {
+  document.getElementById('textoNovedades').textContent = texto;
+})
+.catch(()=> {
+  document.getElementById('textoNovedades').textContent = "No se pudieron cargar las novedades.";
+});
+
+</script>
+
+</body>
+</html>

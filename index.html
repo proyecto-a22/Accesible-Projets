@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyectos accesibles</title>
+
+<!-- CSS externo -->
+<link rel="stylesheet" href="Estilos.css">
+
+</head>
+
+<body>
+
+<main>
+
+  <div class="logo">
+    ¡Proyectos accesibles!
+  </div>
+
+  <div class="relojbarra">
+    <div id="hora"></div>
+    <div id="fecha"></div>
+  </div>
+
+  <div id="clima" class="clima">
+    Cargando clima...
+  </div>
+
+  <nav>
+    <button id="menuBtn" aria-expanded="false">
+      Menú contraído
+    </button>
+
+    <ul id="menuLista">
+      <li tabindex="0" onclick="location.href='index.html'">Inicio</li>
+      <li tabindex="0" onclick="location.href='descargas.html'">Descargas</li>
+      <li tabindex="0" onclick="location.href='novedades.html'">Novedades</li>
+      <li tabindex="0" onclick="location.href='contacto.html'">Contacto</li>
+    </ul>
+  </nav>
+
+  <div class="contenido">
+
+    <h2>Sobre el sitio</h2>
+    <p>
+      Este sitio está enfocado al desarrollo de web accesible
+      y a convertir proyectos web en APK.
+      Algunos proyectos son completamente accesibles,
+      originales y diseñados para jugarse 100 % mediante audio.
+    </p>
+
+    <h2>Estadísticas</h2>
+    <div class="stats">
+      <p>• Páginas: <span id="paginas">3</span></p>
+      <p>• APK: <span id="apks">2</span></p>
+      <p>• Descargas: <span id="descargas">0</span></p>
+    </div>
+
+    <h2>Novedades</h2>
+    <div id="Texts-novedades.txt">
+      Cargando novedades...
+    </div>
+
+  </div>
+
+  <footer>
+    Proyectos accesibles - 2026
+  </footer>
+
+</main>
+
+<script>
+/* =========================
+   AUDIO
+   ========================= */
+let audioCtx = null;
+function activarAudio(){
+  if(audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+
+function sonido(freq,dur,vol){
+  if(!audioCtx) return;
+  let osc = audioCtx.createOscillator();
+  let gain = audioCtx.createGain();
+  osc.frequency.value = freq;
+  gain.gain.value = vol;
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  setTimeout(()=>osc.stop(),dur);
+}
+
+function clickUI(){
+  sonido(650,50,0.04);
+}
+
+function campana(){
+  sonido(1000,300,0.06);
+}
+
+/* activar audio con interacción */
+["keydown","keyup","click","touchstart","pointerdown","mouseover"].forEach(ev=>{
+  document.addEventListener(ev,activarAudio,{once:true});
+});
+
+/* =========================
+   MENÚ
+   ========================= */
+let btn = document.getElementById("menuBtn");
+let lista = document.getElementById("menuLista");
+
+btn.onclick = () => {
+  let abierto = btn.getAttribute("aria-expanded") === "true";
+
+  if (abierto) {
+    lista.classList.remove("mostrar");      // ocultar menú
+    btn.textContent = "Menú contraído";
+    btn.setAttribute("aria-expanded","false");
+  } else {
+    lista.classList.add("mostrar");         // mostrar menú
+    btn.textContent = "Menú expandido";
+    btn.setAttribute("aria-expanded","true");
+  }
+
+  clickUI();
+};
+
+/* =========================
+   RELOJ (solo hora:minuto)
+   ========================= */
+function actualizarReloj(){
+  let ahora = new Date();
+  let h = String(ahora.getHours()).padStart(2,"0");
+  let m = String(ahora.getMinutes()).padStart(2,"0");
+
+  document.getElementById("hora").textContent = "Hora: " + h + ":" + m;
+  document.getElementById("fecha").textContent = ahora.toLocaleDateString();
+}
+setInterval(actualizarReloj,60000);
+actualizarReloj();
+
+/* =========================
+   CLIMA
+   ========================= */
+fetch("https://wttr.in/?format=3")
+.then(r=>r.text())
+.then(t=>{
+  document.getElementById("clima").textContent=t;
+})
+.catch(()=>{
+  document.getElementById("clima").textContent="Clima no disponible";
+});
+
+/* =========================
+   CARGAR NOVEDADES DESDE TXT
+   ========================= */
+fetch('novedades-principal.txt')
+.then(resp => resp.text())
+.then(texto => {
+  document.getElementById('textoNovedades').textContent = texto;
+})
+.catch(() => {
+  document.getElementById('textoNovedades').textContent = "No hay novedades por el momento.";
+});
+</script>
+
+</body>
+</html>
