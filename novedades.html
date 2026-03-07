@@ -182,7 +182,7 @@ btn.focus();
 
 
 /* =========================
-RELOJ
+RELOJ (ARREGLADO)
 ========================= */
 
 function actualizarReloj(){
@@ -193,15 +193,15 @@ let h = String(ahora.getHours()).padStart(2,"0");
 let m = String(ahora.getMinutes()).padStart(2,"0");
 
 document.getElementById("hora").textContent =
-"Hora: "+h+":"+m;
+"Hora: " + h + ":" + m;
 
 document.getElementById("fecha").textContent =
-ahora.toLocaleDateString();
+ahora.toLocaleDateString("es-AR");
 
 }
 
-setInterval(actualizarReloj,60000);
 actualizarReloj();
+setInterval(actualizarReloj,1000);
 
 
 /* =========================
