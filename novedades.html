@@ -17,8 +17,8 @@
 </div>
 
 <div class="relojbarra">
-  <div id="hora"></div>
-  <div id="fecha"></div>
+<div id="hora"></div>
+<div id="fecha"></div>
 </div>
 
 <div id="clima" class="clima">
@@ -26,23 +26,30 @@ Cargando clima...
 </div>
 
 <nav>
-  <button id="menuBtn" aria-expanded="false">
-    Menú contraído
-  </button>
 
-  <ul id="menuLista">
-    <li tabindex="0" onclick="location.href='index.html'">Inicio</li>
-    <li tabindex="0" onclick="location.href='descargas.html'">Descargas</li>
-    <li tabindex="0">Novedades</li>
-    <li tabindex="0" onclick="location.href='contacto.html'">Contacto</li>
-  </ul>
+<button id="menuBtn" aria-expanded="false">
+Menú contraído
+</button>
+
+<ul id="menuLista">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="descargas.html">Descargas</a></li>
+<li><a href="novedades.html">Novedades</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+
+</ul>
+
 </nav>
 
 <div class="contenido">
-  <h2>Novedades</h2>
-  <div id="textoNovedades">
-    Cargando novedades...
-  </div>
+
+<h2>Novedades</h2>
+
+<div id="textoNovedades" aria-live="polite">
+Cargando novedades...
+</div>
+
 </div>
 
 <footer>
@@ -52,81 +59,188 @@ Proyectos accesibles - 2026
 </main>
 
 <script>
-// ------------------ AUDIO ------------------
+
+/* =========================
+AUDIO
+========================= */
+
 let audioCtx = null;
 
 function activarAudio(){
-  if(audioCtx) return;
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+if(audioCtx) return;
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 }
 
 function sonido(freq,dur,vol){
-  if(!audioCtx) return;
-  let osc = audioCtx.createOscillator();
-  let gain = audioCtx.createGain();
-  osc.frequency.value = freq;
-  gain.gain.value = vol;
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-  osc.start();
-  setTimeout(()=>osc.stop(),dur);
+
+if(!audioCtx) return;
+
+let osc = audioCtx.createOscillator();
+let gain = audioCtx.createGain();
+
+osc.frequency.value = freq;
+gain.gain.value = vol;
+
+osc.connect(gain);
+gain.connect(audioCtx.destination);
+
+osc.start();
+
+setTimeout(()=>osc.stop(),dur);
+
 }
 
 function clickUI(){
-  sonido(650,50,0.04);
+sonido(650,50,0.04);
 }
 
-["keydown","keyup","click","touchstart","pointerdown","mouseover"].forEach(ev=>{
-  document.addEventListener(ev,activarAudio,{once:true});
+["keydown","click","touchstart","pointerdown"].forEach(ev=>{
+document.addEventListener(ev,activarAudio,{once:true});
 });
 
-// ------------------ MENÚ ------------------
+
+/* =========================
+MENÚ
+========================= */
+
 let btn = document.getElementById("menuBtn");
 let lista = document.getElementById("menuLista");
 
 btn.onclick = ()=>{
-  let abierto = btn.getAttribute("aria-expanded") === "true";
-  if(abierto){
-    lista.style.display="none";
-    btn.textContent="Menú contraído";
-    btn.setAttribute("aria-expanded","false");
-  } else {
-    lista.style.display="block";
-    btn.textContent="Menú expandido";
-    btn.setAttribute("aria-expanded","true");
-  }
-  clickUI();
+
+let abierto = btn.getAttribute("aria-expanded") === "true";
+
+if(abierto){
+
+lista.classList.remove("mostrar");
+btn.textContent="Menú contraído";
+btn.setAttribute("aria-expanded","false");
+
+}else{
+
+lista.classList.add("mostrar");
+btn.textContent="Menú expandido";
+btn.setAttribute("aria-expanded","true");
+
+}
+
+clickUI();
+
 };
 
-// ------------------ RELOJ (solo hora y minuto) ------------------
-function actualizarReloj(){
-  let ahora = new Date();
-  let h = String(ahora.getHours()).padStart(2,"0");
-  let m = String(ahora.getMinutes()).padStart(2,"0");
-  document.getElementById("hora").textContent = "Hora: "+h+":"+m;
-  document.getElementById("fecha").textContent = ahora.toLocaleDateString();
+
+/* =========================
+SONIDO EN OPCIONES
+========================= */
+
+document.querySelectorAll("#menuLista a").forEach(link=>{
+
+link.addEventListener("focus",clickUI);
+link.addEventListener("mouseenter",clickUI);
+
+});
+
+
+/* =========================
+NAVEGACIÓN CON FLECHAS
+========================= */
+
+let opciones = document.querySelectorAll("#menuLista a");
+
+opciones.forEach((op,i)=>{
+
+op.addEventListener("keydown",(e)=>{
+
+if(e.key === "ArrowDown"){
+e.preventDefault();
+let sig = (i+1) % opciones.length;
+opciones[sig].focus();
 }
+
+if(e.key === "ArrowUp"){
+e.preventDefault();
+let ant = (i-1+opciones.length) % opciones.length;
+opciones[ant].focus();
+}
+
+if(e.key === "Home"){
+e.preventDefault();
+opciones[0].focus();
+}
+
+if(e.key === "End"){
+e.preventDefault();
+opciones[opciones.length-1].focus();
+}
+
+if(e.key === "Escape"){
+lista.classList.remove("mostrar");
+btn.setAttribute("aria-expanded","false");
+btn.textContent="Menú contraído";
+btn.focus();
+}
+
+});
+
+});
+
+
+/* =========================
+RELOJ
+========================= */
+
+function actualizarReloj(){
+
+let ahora = new Date();
+
+let h = String(ahora.getHours()).padStart(2,"0");
+let m = String(ahora.getMinutes()).padStart(2,"0");
+
+document.getElementById("hora").textContent =
+"Hora: "+h+":"+m;
+
+document.getElementById("fecha").textContent =
+ahora.toLocaleDateString();
+
+}
+
 setInterval(actualizarReloj,60000);
 actualizarReloj();
 
-// ------------------ CLIMA ------------------
+
+/* =========================
+CLIMA
+========================= */
+
 fetch("https://wttr.in/?format=3")
+
 .then(r=>r.text())
+
 .then(t=>{
-  document.getElementById("clima").textContent=t;
+document.getElementById("clima").textContent = t;
 })
+
 .catch(()=>{
-  document.getElementById("clima").textContent="Clima no disponible";
+document.getElementById("clima").textContent =
+"Clima no disponible";
 });
 
-// ------------------ CARGAR TXT DE NOVEDADES ------------------
-fetch('Text-novedades.txt')
-.then(resp => resp.text())
-.then(texto => {
-  document.getElementById('textoNovedades').textContent = texto;
+
+/* =========================
+NOVEDADES
+========================= */
+
+fetch("novedades-principal.txt")
+
+.then(resp=>resp.text())
+
+.then(texto=>{
+document.getElementById("textoNovedades").textContent = texto;
 })
-.catch(()=> {
-  document.getElementById('textoNovedades').textContent = "No se pudieron cargar las novedades.";
+
+.catch(()=>{
+document.getElementById("textoNovedades").textContent =
+"No se pudieron cargar las novedades.";
 });
 
 </script>
