@@ -24,10 +24,6 @@
 
 </div>
 
-<div id="clima" class="clima">
-Cargando clima...
-</div>
-
 <nav>
 
 <button id="menuBtn" aria-expanded="false">
@@ -165,19 +161,6 @@ ahora.toLocaleDateString()
 
 setInterval(actualizarReloj,60000)
 actualizarReloj()
-
-/* clima */
-
-fetch("https://wttr.in/?format=3")
-
-.then(r=>r.text())
-
-.then(t=>{
-document.getElementById("clima").textContent=t
-})
-.catch(()=>{
-document.getElementById("clima").textContent="Clima no disponible"
-})
 
 </script>
 
