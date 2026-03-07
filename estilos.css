@@ -1,134 +1,156 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background:
-    radial-gradient(circle at 10% 10%, white 1px, transparent 2px),
-    radial-gradient(circle at 80% 30%, white 1px, transparent 2px),
-    radial-gradient(circle at 30% 70%, white 1px, transparent 2px),
-    linear-gradient(to right,
-      #008a44 0%,
-      #00bfff 10%,
-      white 20%,
-      white 80%,
-      #00bfff 90%,
-      #008a44 100%);
-  background-size:
-    140px 140px,
-    160px 160px,
-    120px 120px,
-    100% 100%;
+margin: 0;
+font-family: Arial, sans-serif;
+background:
+radial-gradient(circle at 10% 10%, white 1px, transparent 2px),
+radial-gradient(circle at 80% 30%, white 1px, transparent 2px),
+radial-gradient(circle at 30% 70%, white 1px, transparent 2px),
+linear-gradient(to right,
+#008a44 0%,
+#00bfff 10%,
+white 20%,
+white 80%,
+#00bfff 90%,
+#008a44 100%);
+background-size:
+140px 140px,
+160px 160px,
+120px 120px,
+100% 100%;
 }
 
 /* =========================
-   PANEL CENTRAL
-   ========================= */
+PANEL CENTRAL
+========================= */
 main {
-  background: white;
-  max-width: 900px;
-  margin: auto;
+background: white;
+max-width: 900px;
+margin: auto;
 }
 
 /* =========================
-   LOGO / TÍTULO
-   ========================= */
+LOGO / TÍTULO
+========================= */
 .logo {
-  background: white;
-  text-align: center;
-  padding: 35px;
-  font-size: 32px;
-  font-weight: bold;
-  color: #00aaff;
+background: white;
+text-align: center;
+padding: 35px;
+font-size: 32px;
+font-weight: bold;
+color: #00aaff;
 }
 
 /* =========================
-   BARRA RELOJ
-   ========================= */
+BARRA RELOJ
+========================= */
 .relojbarra {
-  background: rgba(0,120,60,0.6);
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 20px;
-  color: white;
-  font-size: 18px;
+background: rgba(0,120,60,0.6);
+display: flex;
+justify-content: space-between;
+padding: 12px 20px;
+color: white;
+font-size: 18px;
 }
 
 /* =========================
-   CLIMA
-   ========================= */
+CLIMA
+========================= */
 .clima {
-  text-align: center;
-  padding: 6px;
-  font-size: 14px;
-  color: #004d40;
+text-align: center;
+padding: 6px;
+font-size: 14px;
+color: #004d40;
 }
 
 /* =========================
-   MENÚ
-   ========================= */
+MENÚ
+========================= */
 nav {
-  padding: 15px;
+padding: 15px;
 }
 
 nav button {
-  padding: 10px 15px;
-  font-size: 16px;
-  cursor: pointer;
+padding: 10px 15px;
+font-size: 16px;
+cursor: pointer;
 }
 
-/* El menú siempre empieza oculto */
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 10px;
-  display: none; /* estado inicial */
+/* menú oculto al iniciar */
+#menuLista {
+list-style: none;
+padding: 0;
+margin-top: 10px;
+display: none;
 }
 
-/* Se activa cuando JS agrega clase 'mostrar' */
-nav ul.mostrar {
-  display: block;
+/* visible cuando JS añade la clase */
+#menuLista.mostrar {
+display: block;
 }
 
-nav li {
-  padding: 8px;
-  cursor: pointer;
+#menuLista li {
+padding: 0;
 }
 
-nav li:hover {
-  background: #eef;
+/* enlaces del menú */
+#menuLista li a {
+display: block;
+padding: 10px;
+color: #0077cc;
+}
+
+/* hover con mouse */
+#menuLista li a:hover {
+background: #eef;
+}
+
+/* foco para teclado (accesibilidad) */
+#menuLista li a:focus {
+outline: 2px solid #00aaff;
+background: #eef;
 }
 
 /* =========================
-   CONTENIDO
-   ========================= */
+CONTENIDO
+========================= */
 .contenido {
-  padding: 20px;
+padding: 20px;
 }
 
 /* estadísticas */
 .stats p {
-  margin: 6px 0;
+margin: 6px 0;
 }
 
 /* listas de descargas */
 .descargas li {
-  margin-bottom: 15px;
+margin-bottom: 15px;
 }
 
-/* enlaces */
+/* enlaces generales */
 a {
-  color: #0077cc;
-  text-decoration: none;
+color: #0077cc;
+text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+text-decoration: underline;
 }
 
 /* =========================
-   FOOTER
-   ========================= */
-footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
+NOVEDADES
+========================= */
+
+/* respeta saltos de línea del TXT */
+#textoNovedades {
+white-space: pre-line;
+line-height: 1.5;
 }
+
+/* =========================
+FOOTER
+========================= */
+footer {
+text-align: center;
+padding: 20px;
+font-size: 14px;
