@@ -1,1 +1,1 @@
-Actualizado el css, página principal, y extras.
+Actualizando nuevamente las páginas reduciendo y mejorando código
