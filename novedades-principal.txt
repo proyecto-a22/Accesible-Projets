@@ -1,6 +1,9 @@
+13.39 - Dom, 08/03/2026
+Página de contacto agregada, y sección de donaciones en su misma página, encabezado 3
 12.01 - Dom, 08/03/2026
 Corregido cada página de la web, mejorando CSS y agregado datos importantes en la página de descargas.
 19.48 - Sab, 07/03/2026
 He corregido CSS, JS y borrado código inecesario en cada página.
 23.18 - Vie, 06/03/2026
 Creado el sitio, y añadido página Descargas, y novedades.
+
