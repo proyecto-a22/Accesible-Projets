@@ -57,6 +57,30 @@ puedes hacerlo a través de los medios que se agregarán próximamente en esta s
 Este espacio está reservado para información de contacto del proyecto.
 </p>
 
+<h3>Apoyar el proyecto</h3>
+
+<p>
+Si te gustan las aplicaciones accesibles y quieres apoyar el desarrollo,
+puedes hacerlo mediante una donación.
+</p>
+
+<p>
+<a href="https://link.mercadopago.com.ar/accesibleprojets" target="_blank" rel="noopener" class="donar">
+Donar con Mercado Pago
+</a>
+</p>
+
+<p>
+<a href="https://paypal.me/AlexisValderrama210" target="_blank" rel="noopener" class="donar">
+Donar con PayPal
+</a>
+</p>
+
+<p>
+Tu apoyo ayuda a mantener y mejorar estos proyectos accesibles.
+¡Muchas gracias por colaborar!
+</p>
+
 </div>
 
 <footer>
@@ -213,6 +237,19 @@ ahora.toLocaleDateString("es-AR");
 
 actualizarReloj();
 setInterval(actualizarReloj,1000);
+
+
+/* =========================
+SONIDO EN DONACIONES
+========================= */
+
+document.querySelectorAll(".donar").forEach(link=>{
+
+link.addEventListener("click",()=>{
+sonido(900,80,0.05);
+});
+
+});
 
 </script>
 
