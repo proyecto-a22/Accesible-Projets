@@ -1,3 +1,7 @@
+15.08 - Jue, 12/03/2026
+Trabajando en nuevos proyectos, enfocado en juegos accesibles
+15.06 - Jue, 12/03/2026
+Actualizada la página descargas. Agregado estado de la aplicación.
 13.39 - Dom, 08/03/2026
 Página de contacto agregada, y sección de donaciones en su misma página, encabezado 3
 12.01 - Dom, 08/03/2026
@@ -6,4 +10,5 @@ Corregido cada página de la web, mejorando CSS y agregado datos importantes en 
 He corregido CSS, JS y borrado código inecesario en cada página.
 23.18 - Vie, 06/03/2026
 Creado el sitio, y añadido página Descargas, y novedades.
+
 
