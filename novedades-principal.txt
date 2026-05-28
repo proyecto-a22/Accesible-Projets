@@ -1,3 +1,5 @@
+17.08 - Juev, 28/05/2026
+Implementada la nueva página LV estudios, donde podrán observar mi trabajo como editor de audio, y en caso de interés, comunicarse conmigo para optener información sobre mi servicio de edición de audio.
 16.31 - Vie, 10/04/26
 Actualizada la página de descargas. Tenía unos detalles que ya fueron corregidos, y se agregó nuevo contenido para descargar, el cual, se actualizará periódicamente.
 01.29 - Vie, 27/03/2026
