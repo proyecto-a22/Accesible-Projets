@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edición de audio - Proyectos accesibles</title>
+
+<link rel="stylesheet" href="estilos.css">
+
+</head>
+
+<body>
+
+<main>
+
+<div class="logo">
+¡Proyectos accesibles!
+</div>
+
+<div class="relojbarra">
+<div id="hora"></div>
+<div id="fecha"></div>
+</div>
+
+<nav>
+
+<button id="menuBtn" aria-expanded="false">
+Menú contraído
+</button>
+
+<ul id="menuLista">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+<li><a href="descargas.html">Descargas</a></li>
+<li><a href="isla_de_papel.html">La isla de papel</a></li>
+<li><a href="lv_estudio13.html">Servicios LV estudios 13</a></li>
+<li><a href="minijuegos.html">Minijuegos web</a></li>
+<li><a href="novedades.html">Novedades</a></li>
+
+</ul>
+
+</nav>
+
+<div class="contenido">
+
+<h2>Edición de audio</h2>
+
+<p>
+Servicios básicos de edición de audio orientados a mejorar calidad,
+claridad y presencia en distintos tipos de contenido.
+</p>
+
+<h3>Pisador / Mejora de mezcla</h3>
+
+<p>
+Ajuste de volumen, compresión y equilibrio general para lograr un sonido más limpio y consistente.
+</p>
+
+<audio controls>
+<source src="muestra/XB8Live - Estás escuchando la melodía.mp3" type="audio/mpeg">
+Tu navegador no soporta audio.
+</audio>
+
+<button onclick="toggleForm(1,this)" aria-expanded="false">
+Me interesa
+</button>
+
+<div id="form1" style="display:none; margin-top:10px;">
+
+<label>Nombre:</label><br>
+<input type="text" id="nombre1"><br><br>
+
+<label>País:</label><br>
+<input type="text" id="pais1"><br><br>
+
+<label>Forma de pago:</label><br>
+<select id="pago1">
+<option>Mercado Pago</option>
+<option>PayPal</option>
+<option>Transferencia</option>
+</select><br><br>
+
+<label>Mensaje:</label><br>
+<textarea id="mensaje1" rows="4">Me interesó el servicio de mejora de mezcla.</textarea><br><br>
+
+<button onclick="enviarWhatsApp(1,'Pisador / Mejora de mezcla')">
+Enviar por WhatsApp
+</button>
+
+</div>
+<hr>
+
+<h3>Audio promocional</h3>
+
+<p>
+Edición enfocada a anuncios, redes sociales o contenido publicitario.
+</p>
+
+<audio controls>
+<source src="muestra/XB8Live - Tu mejor opción.mp3" type="audio/mpeg">
+Tu navegador no soporta audio.
+</audio>
+
+<button onclick="toggleForm(2,this)" aria-expanded="false">
+Me interesa
+</button>
+
+<div id="form2" style="display:none; margin-top:10px;">
+
+<label>Nombre:</label><br>
+<input type="text" id="nombre2"><br><br>
+
+<label>País:</label><br>
+<input type="text" id="pais2"><br><br>
+
+<label>Forma de pago:</label><br>
+<select id="pago2">
+<option>Mercado Pago</option>
+<option>PayPal</option>
+<option>Transferencia</option>
+</select><br><br>
+
+<label>Mensaje:</label><br>
+<textarea id="mensaje2" rows="4">Me interesó el servicio de audio promocional.</textarea><br><br>
+
+<button onclick="enviarWhatsApp(2,'Audio promocional')">
+Enviar por WhatsApp
+</button>
+
+</div>
+<hr>
+
+<h3>Audio para WhatsApp</h3>
+
+<p>
+Edición para grupos de wahtsapp temáticos, y otros.
+</p>
+
+<audio controls>
+<source src="TU_AUDIO_3.mp3" type="audio/mpeg">
+Tu navegador no soporta audio.
+</audio>
+
+<button onclick="toggleForm(3,this)" aria-expanded="false">
+Me interesa
+</button>
+
+<div id="form3" style="display:none; margin-top:10px;">
+
+<label>Nombre:</label><br>
+<input type="text" id="nombre3"><br><br>
+
+<label>País:</label><br>
+<input type="text" id="pais3"><br><br>
+
+<label>Forma de pago:</label><br>
+<select id="pago3">
+<option>Mercado Pago</option>
+<option>PayPal</option>
+<option>Transferencia</option>
+</select><br><br>
+
+<label>Mensaje:</label><br>
+<textarea id="mensaje3" rows="4">Me interesó el servicio de mejora para WhatsApp.</textarea><br><br>
+
+<button onclick="enviarWhatsApp(3,'Audio para WhatsApp')">
+Enviar por WhatsApp
+</button>
+
+</div>
+<hr>
+
+<h3>Relato narrado</h3>
+
+<p>
+Narración con edición de voz y ambientación básica.
+</p>
+
+<audio controls>
+<source src="TU_AUDIO_4.mp3" type="audio/mpeg">
+Tu navegador no soporta audio.
+</audio>
+
+<button onclick="toggleForm(4,this)" aria-expanded="false">
+Me interesa
+</button>
+
+<div id="form4" style="display:none; margin-top:10px;">
+
+<label>Nombre:</label><br>
+<input type="text" id="nombre4"><br><br>
+
+<label>País:</label><br>
+<input type="text" id="pais4"><br><br>
+
+<label>Forma de pago:</label><br>
+<select id="pago4">
+<option>Mercado Pago</option>
+<option>PayPal</option>
+<option>Transferencia</option>
+</select><br><br>
+
+<label>Mensaje:</label><br>
+<textarea id="mensaje4" rows="4">Me interesó el servicio de narración.</textarea><br><br>
+
+<button onclick="enviarWhatsApp(4,'Relato narrado')">
+Enviar por WhatsApp
+</button>
+
+</div>
+
+</div>
+
+<footer>
+Proyectos accesibles - 2026
+</footer>
+
+</main>
+
+<script>
+
+let audioCtx = null;
+
+function activarAudio(){
+if(audioCtx) return;
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+
+function sonido(freq,dur,vol){
+if(!audioCtx) return;
+let osc = audioCtx.createOscillator();
+let gain = audioCtx.createGain();
+osc.frequency.value = freq;
+gain.gain.value = vol;
+osc.connect(gain);
+gain.connect(audioCtx.destination);
+osc.start();
+setTimeout(()=>osc.stop(),dur);
+}
+
+function clickUI(){
+sonido(650,50,0.04);
+}
+
+["keydown","click","touchstart","pointerdown"].forEach(ev=>{
+document.addEventListener(ev,activarAudio,{once:true});
+});
+
+document.querySelectorAll("#menuLista a").forEach(link=>{
+link.addEventListener("mouseenter",clickUI);
+link.addEventListener("focus",clickUI);
+});
+
+let btn = document.getElementById("menuBtn");
+let lista = document.getElementById("menuLista");
+
+btn.onclick = ()=>{
+let abierto = btn.getAttribute("aria-expanded") === "true";
+if(abierto){
+lista.classList.remove("mostrar");
+btn.textContent = "Menú contraído";
+btn.setAttribute("aria-expanded","false");
+}else{
+lista.classList.add("mostrar");
+btn.textContent = "Menú expandido";
+btn.setAttribute("aria-expanded","true");
+}
+clickUI();
+};
+
+function actualizarReloj(){
+let ahora = new Date();
+let h = String(ahora.getHours()).padStart(2,"0");
+let m = String(ahora.getMinutes()).padStart(2,"0");
+document.getElementById("hora").textContent = "Hora: " + h + ":" + m;
+document.getElementById("fecha").textContent = ahora.toLocaleDateString();
+}
+
+setInterval(actualizarReloj,1000);
+actualizarReloj();
+
+/* =========================
+FORMULARIOS + WHATSAPP
+========================= */
+
+function toggleForm(n,btn){
+
+let forms = [1,2,3,4];
+
+forms.forEach(i=>{
+let f = document.getElementById("form"+i);
+if(i===n){
+let abierto = f.style.display === "block";
+f.style.display = abierto ? "none" : "block";
+btn.setAttribute("aria-expanded", abierto ? "false" : "true");
+btn.textContent = abierto ? "Me interesa" : "Ocultar formulario";
+if(!abierto){
+setTimeout(()=>{document.getElementById("nombre"+n).focus();},100);
+}
+}else{
+if(f) f.style.display = "none";
+}
+});
+
+}
+
+function enviarWhatsApp(n,servicio){
+
+let nombre = document.getElementById("nombre"+n).value.trim();
+let pais = document.getElementById("pais"+n).value.trim();
+let pago = document.getElementById("pago"+n).value;
+let mensaje = document.getElementById("mensaje"+n).value.trim();
+
+if(nombre===""){
+alert("Por favor ingresá tu nombre");
+document.getElementById("nombre"+n).focus();
+return;
+}
+
+let texto =
+"Hola, vi tu demo y quiero consultar:%0A%0A" +
+"Servicio: " + servicio + "%0A" +
+"Nombre: " + nombre + "%0A" +
+"País: " + pais + "%0A" +
+"Forma de pago: " + pago + "%0A%0A" +
+"Mensaje:%0A" + mensaje;
+
+let numero = "5492984616362";
+
+window.open("https://wa.me/" + numero + "?text=" + texto,"_blank");
+
+}
+
+</script>
+
+</body>
+</html>
