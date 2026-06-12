@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La isla de papel</title>
+
+<link rel="stylesheet" href="estilos.css">
+
+</head>
+
+<body>
+
+<main>
+
+<div class="logo">
+¡Proyectos accesibles!
+</div>
+
+<div class="relojbarra">
+<div id="hora"></div>
+<div id="fecha"></div>
+</div>
+
+<nav>
+
+<button id="menuBtn" aria-expanded="false">
+Menú contraído
+</button>
+
+<ul id="menuLista">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+<li><a href="descargas.html">Descargas</a></li>
+<li><a href="lv_estudio13.html">Servicios LV estudios 13</a></li>
+<li><a href="minijuegos.html">Minijuegos web</a></li>
+<li><a href="novedades.html">Novedades</a></li>
+
+</ul>
+
+</nav>
+
+<!-- =========================
+CONTENIDO BIBLIOTECA
+========================= -->
+
+<div class="contenido">
+
+<h2>Mi biblioteca personal</h2>
+
+<p>
+Aquí encontrarás relatos, novelas y otros escritos para la lectura general.
+Cada historia tiene su propia página individual, dividida en capítulos completos.
+</p>
+
+<h3>Lista de historias y relatos</h3>
+
+<p>
+Selecciona una historia para comenzar a leer.
+</p>
+
+<table border="1" style="width:100%; border-collapse:collapse; margin-top:15px; text-align:left;">
+
+<tr>
+<th>Nombre</th>
+<th>Autor</th>
+<th>Fecha de publicación</th>
+<th>Estado</th>
+<th>Género</th>
+<th>Sinopsis</th>
+<th>Tiempo de lectura</th>
+<th>Leer</th>
+</tr>
+
+<tr>
+<td>Silencio en Fort Davis</td>
+<td>Alexis Valderrama</td>
+<td>2026</td>
+<td>En curso</td>
+<td>Misterio / Suspenso</td>
+<td>Un lugar olvidado donde el silencio parece esconder algo más profundo de lo que debería.</td>
+<td>20–30 min por capítulo</td>
+<td><a href="ficha01.html">Leer ahora</a></td>
+</tr>
+
+<tr>
+<td>Relato corto: Noche de tormenta</td>
+<td>Alexis Valderrama</td>
+<td>2026</td>
+<td>Finalizado</td>
+<td>Relato corto / Drama</td>
+<td>Una noche común que cambia cuando ocurre algo inesperado durante la tormenta.</td>
+<td>10–15 min</td>
+<td><a href="tormenta.html">Leer ahora</a></td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<footer>
+Proyectos accesibles - 2026
+</footer>
+
+</main>
+
+<script>
+
+let audioCtx = null;
+
+function activarAudio(){
+if(audioCtx) return;
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+
+function sonido(freq,dur,vol){
+if(!audioCtx) return;
+let osc = audioCtx.createOscillator();
+let gain = audioCtx.createGain();
+osc.frequency.value = freq;
+gain.gain.value = vol;
+osc.connect(gain);
+gain.connect(audioCtx.destination);
+osc.start();
+setTimeout(()=>osc.stop(),dur);
+}
+
+function clickUI(){
+sonido(650,50,0.04);
+}
+
+["keydown","click","touchstart","pointerdown"].forEach(ev=>{
+document.addEventListener(ev,activarAudio,{once:true});
+});
+
+document.querySelectorAll("#menuLista a").forEach(link=>{
+link.addEventListener("mouseenter",clickUI);
+link.addEventListener("focus",clickUI);
+});
+
+let btn = document.getElementById("menuBtn");
+let lista = document.getElementById("menuLista");
+
+btn.onclick = ()=>{
+
+let abierto = btn.getAttribute("aria-expanded") === "true";
+
+if(abierto){
+lista.classList.remove("mostrar");
+btn.textContent = "Menú contraído";
+btn.setAttribute("aria-expanded","false");
+}else{
+lista.classList.add("mostrar");
+btn.textContent = "Menú expandido";
+btn.setAttribute("aria-expanded","true");
+}
+
+clickUI();
+
+};
+
+function actualizarReloj(){
+let ahora = new Date();
+let h = String(ahora.getHours()).padStart(2,"0");
+let m = String(ahora.getMinutes()).padStart(2,"0");
+document.getElementById("hora").textContent = "Hora: " + h + ":" + m;
+document.getElementById("fecha").textContent = ahora.toLocaleDateString();
+}
+
+setInterval(actualizarReloj,1000);
+actualizarReloj();
+
+</script>
+
+</body>
+</html>
