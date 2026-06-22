@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destinos entrecruzados</title>
+
+<link rel="stylesheet" href="estilos.css">
+
+</head>
+
+<body>
+
+<main>
+
+<div class="logo">
+¡Proyectos accesibles!
+</div>
+
+<div class="relojbarra">
+<div id="hora"></div>
+<div id="fecha"></div>
+</div>
+
+<nav>
+
+<button id="menuBtn" aria-expanded="false">
+Menú
+</button>
+
+<ul id="menuLista">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+<li><a href="descargas.html">Descargas</a></li>
+<li><a href="lv_estudio13.html">Servicios LV estudios 13</a></li>
+<li><a href="minijuegos.html">Minijuegos web</a></li>
+<li><a href="novedades.html">Novedades</a></li>
+
+</ul>
+
+</nav>
+
+<!-- =========================
+CONTENIDO DEL LIBRO
+========================= -->
+
+<div class="contenido">
+
+<h2>Información</h2>
+
+<table border="1" style="width:100%; border-collapse:collapse; margin-top:15px; text-align:left;">
+
+<tr>
+<th>Campo</th>
+<th>Información</th>
+</tr>
+
+<tr>
+<td>Nombre del libro</td>
+<td>Silencio en Fort Davis</td>
+</tr>
+
+<tr>
+<td>Autor</td>
+<td>Alexis Valderrama</td>
+</tr>
+
+<tr>
+<td>Año</td>
+<td>2026</td>
+</tr>
+
+<tr>
+<td>Estado</td>
+<td>En curso</td>
+</tr>
+
+<tr>
+<td>Progreso</td>
+<td id="progreso">Cargando...</td>
+</tr>
+
+</table>
+
+<p>
+Él, es George. Ella, es Tina. Dos vidas separadas entre sí, sin saber, que los caminos, no son tan diferentes uno del otro, y que como en las calles, en alguna esquina, siempre, siempre, se cruzan entre sí.
+…
+Capucha, gorra y lentes, describen la normalidad de Patiño a la perfección. Discreto, retraído, solitario, deportista, y autor de regué.
+Extrovertida, dinámica, envidiable por unas cuantas, y sociable, definen a Díaz, una mujer, con todas las que decir, y en todo lugar.
+En un inesperado día, ambos coinciden en un mismo punto, y a una misma hora exacta, empapados por la lluvia.
+EL ¿por qué? es un misterio, pero de las gotas inesperadas, surge una fusión magnética difícil de romper.
+…
+Como cualquier otro día, Vaneza se dirigía a su trabajo habitual en la cafetería del centro este de la ciudad.
+Como cualquier otro día, Mariano ingresaba en la misma cafetería cercana a su laburo para descansar del insondable ruido de oficina.
+Un mismo espacio, el mismo café, y la misma persona que lo atendía siempre que iba, aunque en esta ocasión, no sería exactamente, la misma situación a la que se había habituado por un tiempo considerable.
+…
+A Toti no le gustaba correr. Lo odiaba, para ser franco. Prefería la comodidad de una silla GAMER, el último juego lanzado por la S.L Video CÓMPANI, y una bolsa recién abierta de sus papas con crema y cebollas que le gustaban. Sí, eso, en definitiva, era vida para él.
+A Dana no le gustaba diseño gráfico, aquella estúpida asignatura que sus padres le habían obligado tomar a inicio de año, pero que, con orgullo, había caído en cuenta de que se le daba perfectamente.
+Aquel día en la escuela iba todo normal. ¿Qué podría pasar para cambiar la triste monotonía?
+8 personajes diferentes, que se conectan en un punto de la historia, con finales extraños, o inesperados, y que cambia de alguna manera, el destino de cada uno.
+</p>
+
+<h3>Área de lectura</h3>
+
+<p><strong>Silencio en Fort Davis</strong></p>
+
+<p>Capítulos disponibles:</p>
+
+<ul id="listaCapitulos"></ul>
+
+<p>
+<label>
+<input type="checkbox" id="leerVozAlta">
+Leer en voz alta
+</label>
+</p>
+
+<fieldset id="controlesLectura" disabled>
+
+<legend>Controles de lectura</legend>
+
+<label for="velocidad">
+Velocidad de lectura
+</label>
+
+<br><br>
+
+<span>Más lento</span>
+
+<input
+type="range"
+id="velocidad"
+min="0.5"
+max="2"
+step="0.1"
+value="1">
+
+<span>Más rápido</span>
+
+</fieldset>
+
+<hr>
+
+<h4 id="tituloCapitulo">Cargando capítulo...</h4>
+
+<p id="contenidoCapitulo">
+Por favor espera mientras se carga el libro...
+</p>
+
+<hr>
+
+<button id="btnAnterior" disabled>
+Página atrás
+</button>
+
+<button id="btnSiguiente">
+Página siguiente
+</button>
+
+</div>
+
+<footer>
+Proyectos accesibles - 2026
+</footer>
+
+</main>
+
+<script>
+
+let audioCtx = null;
+
+function activarAudio(){
+if(audioCtx) return;
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+
+function sonido(freq,dur,vol){
+if(!audioCtx) return;
+let osc = audioCtx.createOscillator();
+let gain = audioCtx.createGain();
+osc.frequency.value = freq;
+gain.gain.value = vol;
+osc.connect(gain);
+gain.connect(audioCtx.destination);
+osc.start();
+setTimeout(()=>osc.stop(),dur);
+}
+
+function clickUI(){
+sonido(650,50,0.04);
+}
+
+["keydown","click","touchstart","pointerdown"].forEach(ev=>{
+document.addEventListener(ev,activarAudio,{once:true});
+});
+
+document.querySelectorAll("#menuLista a").forEach(link=>{
+link.addEventListener("mouseenter",clickUI);
+link.addEventListener("focus",clickUI);
+});
+
+let btn = document.getElementById("menuBtn");
+let lista = document.getElementById("menuLista");
+
+btn.onclick = ()=>{
+
+let abierto = btn.getAttribute("aria-expanded") === "true";
+
+if(abierto){
+lista.classList.remove("mostrar");
+btn.textContent = "Menú contraído";
+btn.setAttribute("aria-expanded","false");
+}else{
+lista.classList.add("mostrar");
+btn.textContent = "Menú expandido";
+btn.setAttribute("aria-expanded","true");
+}
+
+clickUI();
+
+};
+
+function actualizarReloj(){
+let ahora = new Date();
+let h = String(ahora.getHours()).padStart(2,"0");
+let m = String(ahora.getMinutes()).padStart(2,"0");
+
+document.getElementById("hora").textContent =
+"Hora: " + h + ":" + m;
+
+document.getElementById("fecha").textContent =
+ahora.toLocaleDateString();
+}
+
+setInterval(actualizarReloj,1000);
+actualizarReloj();
+
+const leerVozAlta = document.getElementById("leerVozAlta");
+const controlesLectura = document.getElementById("controlesLectura");
+
+leerVozAlta.addEventListener("change",()=>{
+
+controlesLectura.disabled = !leerVozAlta.checked;
+
+});
+
+
+// =========================
+// LECTOR DE LIBRO (NUEVO)
+// =========================
+
+let capitulos = [];
+let indiceActual = 0;
+
+const tituloCapitulo = document.getElementById("tituloCapitulo");
+const contenidoCapitulo = document.getElementById("contenidoCapitulo");
+const listaCapitulos = document.getElementById("listaCapitulos");
+
+const btnAnterior = document.getElementById("btnAnterior");
+const btnSiguiente = document.getElementById("btnSiguiente");
+
+async function cargarLibro(){
+try{
+let res = await fetch("libros/Destinos_Cruzados.txt");
+let texto = await res.text();
+
+procesarTexto(texto);
+renderLista();
+mostrarCapitulo(0);
+
+}catch(e){
+console.log("Error cargando libro:", e);
+tituloCapitulo.textContent = "Error al cargar el libro";
+}
+}
+
+function procesarTexto(texto){
+let partes = texto.split(/(?=Capítulo\s*\d+:)/g);
+
+capitulos = partes.map(c=>{
+let lineas = c.trim().split("\n");
+let titulo = lineas[0];
+let contenido = lineas.slice(1).join("\n").trim();
+
+return {titulo, contenido};
+}).filter(c=>c.titulo);
+}
+
+function renderLista(){
+listaCapitulos.innerHTML = "";
+
+capitulos.forEach((c,i)=>{
+let li = document.createElement("li");
+let b = document.createElement("button");
+
+b.textContent = c.titulo;
+b.onclick = ()=>mostrarCapitulo(i);
+
+li.appendChild(b);
+listaCapitulos.appendChild(li);
+});
+}
+
+function mostrarCapitulo(i){
+if(i < 0 || i >= capitulos.length) return;
+
+indiceActual = i;
+
+tituloCapitulo.textContent = capitulos[i].titulo;
+contenidoCapitulo.textContent = capitulos[i].contenido;
+
+document.getElementById("progreso").textContent =
+`Capítulo ${i+1} de ${capitulos.length}`;
+
+btnAnterior.disabled = i === 0;
+btnSiguiente.disabled = i === capitulos.length - 1;
+}
+
+btnAnterior.onclick = ()=>{
+mostrarCapitulo(indiceActual - 1);
+};
+
+btnSiguiente.onclick = ()=>{
+mostrarCapitulo(indiceActual + 1);
+};
+
+cargarLibro();
+
+</script>
+
+</body>
+</html>
