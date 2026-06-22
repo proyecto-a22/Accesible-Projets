@@ -1,22 +1,27 @@
-17.08 - Juev, 28/05/2026
-Implementada la nueva página LV estudios, donde podrán observar mi trabajo como editor de audio, y en caso de interés, comunicarse conmigo para optener información sobre mi servicio de edición de audio.
-16.31 - Vie, 10/04/26
-Actualizada la página de descargas. Tenía unos detalles que ya fueron corregidos, y se agregó nuevo contenido para descargar, el cual, se actualizará periódicamente.
-01.29 - Vie, 27/03/2026
-Corregido un pequeño detalle en los link de descargas.
-20.08 - Juev, 26/03/2026
-Nueva actualización en la aplicación anotador accesible de truco. Novedades de la versión en la misma aplicación
-15.08 - Jue, 12/03/2026
-Trabajando en nuevos proyectos, enfocado en juegos accesibles
-15.06 - Jue, 12/03/2026
-Actualizada la página descargas. Agregado estado de la aplicación.
-13.39 - Dom, 08/03/2026
-Página de contacto agregada, y sección de donaciones en su misma página, encabezado 3
-12.01 - Dom, 08/03/2026
-Corregido cada página de la web, mejorando CSS y agregado datos importantes en la página de descargas.
-19.48 - Sab, 07/03/2026
-He corregido CSS, JS y borrado código inecesario en cada página.
-23.18 - Vie, 06/03/2026
-Creado el sitio, y añadido página Descargas, y novedades.
-
-
+21.46 P.M - DOM, 21/06/2026
+• Se han corregido algunos detalles estéticos de la página, entre ellos, el botón de menú, que se encontraba mal renombrado.
+• Se está trabajando en minijuegos de cartas, para activar la sección nueva en el menú. Se agregarán otros estilos, cuando estos primeros estén terminados adecuadamente.
+21.41 P.M - DOM, 21/06/2026
+• Agregado dos nuevos apartados, "Isla de papel",  y "Minijuegos webs"
+• Además, en el primer apartado mencionado, ya hay avances en lectura, y, aunque está en fase de prueba, es perfectamente funcional y accesible.
+• El segundo apartado simplemente es una presentación sujeta a cambios, y no hay juegos activos de momento.
+17.08 - JUEV, 28/05/2026
+• Implementada la nueva página LV estudios, donde podrán observar mi trabajo como editor de audio, y en caso de interés, comunicarse conmigo para optener información sobre mi servicio de edición de audio.
+16.31 - VIE, 10/04/26
+• Actualizada la página de descargas. Tenía unos detalles que ya fueron corregidos, y se agregó nuevo contenido para descargar, el cual, se actualizará periódicamente.
+01.29 - FIE, 27/03/2026
+• Corregido un pequeño detalle en los link de descargas.
+20.08 - JUEV, 26/03/2026
+• Nueva actualización en la aplicación anotador accesible de truco. Novedades de la versión en la misma aplicación
+15.08 - JUEV, 12/03/2026
+• Trabajando en nuevos proyectos, enfocado en juegos accesibles
+15.06 - JUEV, 12/03/2026
+• Actualizada la página descargas. Agregado estado de la aplicación.
+13.39 - DOM, 08/03/2026
+• Página de contacto agregada, y sección de donaciones en su misma página, encabezado 3
+12.01 - DOM, 08/03/2026
+• Corregido cada página de la web, mejorando CSS y agregado datos importantes en la página de descargas.
+19.48 - SÁB, 07/03/2026
+• He corregido CSS, JS y borrado código inecesario en cada página.
+23.18 - VIE, 06/03/2026
+• Creado el sitio, y añadido página Descargas, y novedades.
