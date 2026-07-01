@@ -41,10 +41,6 @@ Menú
 
 </nav>
 
-<!-- =========================
-CONTENIDO DEL LIBRO
-========================= -->
-
 <div class="contenido">
 
 <h2>Información</h2>
@@ -275,10 +271,6 @@ leerCapitulo();
 
 window.addEventListener("beforeunload",detenerLectura);
 
-
-// =========================
-// LECTOR DE LIBRO (NUEVO)
-// =========================
 
 let capitulos = [];
 let indiceActual = 0;
