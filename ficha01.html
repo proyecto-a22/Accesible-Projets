@@ -224,12 +224,54 @@ actualizarReloj();
 
 const leerVozAlta = document.getElementById("leerVozAlta");
 const controlesLectura = document.getElementById("controlesLectura");
+const velocidad = document.getElementById("velocidad");
+
+let lecturaActual = null;
+
+function detenerLectura(){
+speechSynthesis.cancel();
+lecturaActual = null;
+}
+
+function leerCapitulo(){
+
+if(!leerVozAlta.checked) return;
+
+detenerLectura();
+
+lecturaActual = new SpeechSynthesisUtterance(
+tituloCapitulo.textContent + ". " +
+contenidoCapitulo.textContent
+);
+
+lecturaActual.lang = "es-ES";
+lecturaActual.rate = parseFloat(velocidad.value);
+
+speechSynthesis.speak(lecturaActual);
+
+}
 
 leerVozAlta.addEventListener("change",()=>{
 
 controlesLectura.disabled = !leerVozAlta.checked;
 
+if(leerVozAlta.checked){
+leerCapitulo();
+}else{
+detenerLectura();
+}
+
 });
+
+velocidad.addEventListener("input",()=>{
+
+if(leerVozAlta.checked){
+leerCapitulo();
+}
+
+});
+
+window.addEventListener("beforeunload",detenerLectura);
 
 
 // =========================
@@ -301,6 +343,13 @@ document.getElementById("progreso").textContent =
 
 btnAnterior.disabled = i === 0;
 btnSiguiente.disabled = i === capitulos.length - 1;
+
+if(leerVozAlta.checked){
+leerCapitulo();
+}else{
+detenerLectura();
+}
+
 }
 
 btnAnterior.onclick = ()=>{
