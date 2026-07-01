@@ -41,10 +41,6 @@ Menú
 
 </nav>
 
-<!-- =========================
-CONTENIDO DEL LIBRO
-========================= -->
-
 <div class="contenido">
 
 <h2>Información</h2>
@@ -58,7 +54,7 @@ CONTENIDO DEL LIBRO
 
 <tr>
 <td>Nombre del libro</td>
-<td>Silencio en Fort Davis</td>
+<td>Destinos cruzados</td>
 </tr>
 
 <tr>
@@ -103,7 +99,7 @@ Aquel día en la escuela iba todo normal. ¿Qué podría pasar para cambiar la t
 
 <h3>Área de lectura</h3>
 
-<p><strong>Silencio en Fort Davis</strong></p>
+<p><strong>Destinos cruzados</strong></p>
 
 <p>Capítulos disponibles:</p>
 
@@ -238,17 +234,55 @@ actualizarReloj();
 
 const leerVozAlta = document.getElementById("leerVozAlta");
 const controlesLectura = document.getElementById("controlesLectura");
+const velocidad = document.getElementById("velocidad");
+
+let lecturaActual = null;
+
+function detenerLectura(){
+speechSynthesis.cancel();
+lecturaActual = null;
+}
+
+function leerCapitulo(){
+
+if(!leerVozAlta.checked) return;
+
+detenerLectura();
+
+lecturaActual = new SpeechSynthesisUtterance(
+tituloCapitulo.textContent + ". " +
+contenidoCapitulo.textContent
+);
+
+lecturaActual.lang = "es-ES";
+lecturaActual.rate = parseFloat(velocidad.value);
+
+speechSynthesis.speak(lecturaActual);
+
+}
 
 leerVozAlta.addEventListener("change",()=>{
 
 controlesLectura.disabled = !leerVozAlta.checked;
 
+if(leerVozAlta.checked){
+leerCapitulo();
+}else{
+detenerLectura();
+}
+
 });
 
+velocidad.addEventListener("input",()=>{
 
-// =========================
-// LECTOR DE LIBRO (NUEVO)
-// =========================
+if(leerVozAlta.checked){
+leerCapitulo();
+}
+
+});
+
+window.addEventListener("beforeunload",detenerLectura);
+
 
 let capitulos = [];
 let indiceActual = 0;
@@ -262,7 +296,7 @@ const btnSiguiente = document.getElementById("btnSiguiente");
 
 async function cargarLibro(){
 try{
-let res = await fetch("libros/Destinos_Cruzados.txt");
+let res = await fetch("libros/silencio_en_Fort_Davis.txt");
 let texto = await res.text();
 
 procesarTexto(texto);
@@ -315,6 +349,13 @@ document.getElementById("progreso").textContent =
 
 btnAnterior.disabled = i === 0;
 btnSiguiente.disabled = i === capitulos.length - 1;
+
+if(leerVozAlta.checked){
+leerCapitulo();
+}else{
+detenerLectura();
+}
+
 }
 
 btnAnterior.onclick = ()=>{
