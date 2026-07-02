@@ -1,3 +1,12 @@
+21.26 - Mier, 01/08/2026
+• Arreglado varios problemas de redirección en enlaces
+• Corregido varios errores de ortografía. Es posible que queden algunos aún
+21.23 - Mar, 30/06/2026
+Próximamente se agregarán elementos nuevos en el apartado minijuegos web
+21.23 - Mar, 30/06/2026
+• Agregado un libro nuevo.
+• Corregido la ficha #2, ya que algunas características eran erróneas en la información del libro.
+• Corregido varios detalles de la página general de libros.
 21.46 P.M - DOM, 21/06/2026
 • Se han corregido algunos detalles estéticos de la página, entre ellos, el botón de menú, que se encontraba mal renombrado.
 • Se está trabajando en minijuegos de cartas, para activar la sección nueva en el menú. Se agregarán otros estilos, cuando estos primeros estén terminados adecuadamente.
