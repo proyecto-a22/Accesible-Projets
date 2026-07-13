@@ -19,18 +19,12 @@ background-size:
 100% 100%;
 }
 
-/* =========================
-PANEL CENTRAL
-========================= */
 main {
 background: white;
 max-width: 900px;
 margin: auto;
 }
 
-/* =========================
-LOGO / TÍTULO
-========================= */
 .logo {
 background: white;
 text-align: center;
@@ -40,9 +34,6 @@ font-weight: bold;
 color: #00aaff;
 }
 
-/* =========================
-BARRA RELOJ
-========================= */
 .relojbarra {
 background: rgba(0,120,60,0.6);
 display: flex;
@@ -52,9 +43,6 @@ color: white;
 font-size: 18px;
 }
 
-/* =========================
-CLIMA
-========================= */
 .clima {
 text-align: center;
 padding: 6px;
@@ -62,9 +50,6 @@ font-size: 14px;
 color: #004d40;
 }
 
-/* =========================
-MENÚ
-========================= */
 nav {
 padding: 15px;
 }
@@ -75,7 +60,6 @@ font-size: 16px;
 cursor: pointer;
 }
 
-/* menú oculto al iniciar */
 #menuLista {
 list-style: none;
 padding: 0;
@@ -83,7 +67,6 @@ margin-top: 10px;
 display: none;
 }
 
-/* visible cuando JS añade la clase */
 #menuLista.mostrar {
 display: block;
 }
@@ -92,42 +75,49 @@ display: block;
 padding: 0;
 }
 
-/* enlaces del menú */
+.categoria{
+width:100%;
+margin-top:15px;
+padding:12px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+text-align:left;
+}
+
+.categoriaContenido{
+display:none;
+margin-top:10px;
+margin-bottom:20px;
+}
+
 #menuLista li a {
 display: block;
 padding: 10px;
 color: #0077cc;
 }
 
-/* hover con mouse */
 #menuLista li a:hover {
 background: #eef;
 }
 
-/* foco para teclado (accesibilidad) */
 #menuLista li a:focus {
 outline: 2px solid #00aaff;
 background: #eef;
 }
 
-/* =========================
-CONTENIDO
-========================= */
 .contenido {
 padding: 20px;
 }
 
-/* estadísticas */
 .stats p {
 margin: 6px 0;
 }
 
-/* listas de descargas */
 .descargas li {
 margin-bottom: 15px;
 }
 
-/* enlaces generales */
 a {
 color: #0077cc;
 text-decoration: none;
@@ -137,19 +127,12 @@ a:hover {
 text-decoration: underline;
 }
 
-/* =========================
-NOVEDADES
-========================= */
 
-/* respeta saltos de línea del TXT */
 #textoNovedades {
 white-space: pre-line;
 line-height: 1.5;
 }
 
-/* =========================
-FOOTER
-========================= */
 footer {
 text-align: center;
 padding: 20px;
