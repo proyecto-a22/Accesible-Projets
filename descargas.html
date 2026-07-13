@@ -48,33 +48,122 @@ Menú
 
 <h2>Aplicaciones disponibles</h2>
 
+<button class="categoria" aria-expanded="false">
+Android
+</button><br>
+
+<div class="categoriaContenido">
+
 <ul class="descargas">
 
-<li>
+<table>
 
-<strong>Melodía Digital</strong><br>
-Versión: 1.0 Beta<br>
-Sistema: Android 7 o superior<br>
-Peso: 4.36 MB<br>
-Descripción: Aplicación de radio de la conocida emisora en línea Melodía Digital.<br>
-Estado de la APK: En desarrollo<br>
-<a href="apk/melodia_digital1.0.apk">Descargar APK</a>
+<tr>
+<th>Proyecto</th>
+<th>Versión</th>
+<th>Sistema</th>
+<th>Peso</th>
+<th>Estado</th>
+<th>Descarga</th>
+</tr>
 
-</li>
+<tr>
+<td>Melodía Digital</td>
+<td>1.0 Beta</td>
+<td>Android 7+</td>
+<td>4.36 MB</td>
+<td>En desarrollo</td>
+<td><a href="apk/melodia_digital1.0.apk">Descargar</a></td>
+</tr>
 
-<li>
+<tr>
+<td>Anotador de Truco Accesible</td>
+<td>1.0 Beta</td>
+<td>Android 7+</td>
+<td>9.03 MB</td>
+<td>En desarrollo</td>
+<td><a href="apk/anotadorTrucoAccesible1.0.apk">Descargar</a></td>
+</tr>
 
-<strong>Anotador de Truco Accesible</strong><br>
-Versión: 1.0 Beta<br>
-Sistema: Android 7 o superior<br>
-Peso: 9.03 MB<br>
-Descripción: Anotador accesible para partidas de truco.<br>
-Estado de la APK: En desarrollo<br>
-<a href="apk/anotadorTrucoAccesible1.0.apk">Descargar APK</a>
-
-</li>
+</table>
 
 </ul>
+
+</div>
+
+<button class="categoria" aria-expanded="false">
+Windows
+</button><br>
+
+<div class="categoriaContenido">
+
+<ul class="descargas">
+
+<table>
+
+<tr>
+<th>Proyecto</th>
+<th>Desarrollador</th>
+<th>Versión</th>
+<th>Sistema</th>
+<th>Peso</th>
+<th>Estado</th>
+<th>Descripción</th>
+<th>Descarga</th>
+</tr>
+
+<tr>
+<td>Melodía Digital</td>
+<td>Alexis Valderrama</td>
+<td>1.0</td>
+<td>Windows 7, 10 u 11</td>
+<td>95.0MB</td>
+<td>En progreso</td>
+<td>Escucha 100% en línea y de forma accesible la emisora Melodía Digital, desde tu propio computador</td>
+<td><a href="https://www.dropbox.com/scl/fi/eug8chnihi2bbc11bf54p/Melod-a_Digital.zip?rlkey=5eo4h0kula5kua830ah7tyja1&dl=1">Descargar</a></td>
+</table>
+
+</ul>
+
+</div>
+
+<button class="categoria" aria-expanded="false">
+Juegos y apk de terceros
+</button><br>
+
+<div class="categoriaContenido">
+
+<ul class="descargas">
+
+<table>
+
+<tr>
+<th>Proyecto</th>
+<th>Desarrollador</th>
+<th>Contacto</th>
+<th>Versión</th>
+<th>Sistema</th>
+<th>Peso</th>
+<th>Estado</th>
+<th>Descripción</th>
+<th>Descarga</th>
+</tr>
+
+<tr>
+<td>Adibina la palabra</td>
+<td>Leslie Leandro</td>
+<td>lishi.lg1o@gmail.com</td>
+<td>1.2</td>
+<td>Windows 7, 10 u 11</td>
+<td>17.4MB</td>
+<td>En progreso</td>
+<td>Un juego accesible de agilidad mental donde tendrás que descubrir la palabra oculta a partir de pistas antes de quedarte sin vidas</td>
+<td><a href="https://www.dropbox.com/scl/fi/hcw1qax7bd8t8euki3rzs/adivina_la_palabra1.2.zip?rlkey=ho7pj6j5uvlto3d6vnyhvzfz4&dl=1">Descargar</a></td>
+</table>
+
+</ul>
+
+</div>
 
 </div>
 
@@ -233,6 +322,40 @@ ahora.toLocaleDateString("es-AR");
 actualizarReloj();
 setInterval(actualizarReloj,1000);
 
+document.querySelectorAll(".categoria").forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+let contenido = btn.nextElementSibling;
+
+while (contenido && !contenido.classList.contains("categoriaContenido")) {
+    contenido = contenido.nextElementSibling;
+}
+
+let abierto = btn.getAttribute("aria-expanded")==="true";
+
+btn.setAttribute("aria-expanded",!abierto);
+
+if(abierto){
+
+contenido.style.display="none";
+btn.textContent=btn.textContent.replace("▼ ","");
+
+}else{
+
+contenido.style.display="block";
+
+if(!btn.textContent.startsWith("▼ ")){
+btn.textContent="▼ "+btn.textContent;
+}
+
+}
+
+clickUI();
+
+});
+
+});
 </script>
 
 </body>
