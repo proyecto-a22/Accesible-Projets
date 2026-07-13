@@ -1,3 +1,7 @@
+23.09 - Dom, 12/07/2026
+• Modificada la página de descargas. Ahora está distribuída por sistema operatibo y colaboración
+• Se modificó el CSS corrigiendo código
+• Nuevo juego agregado en el apartado de descargas de terceros, bajo permiso de la desarrolladora
 21.26 - Mier, 01/08/2026
 • Arreglado varios problemas de redirección en enlaces
 • Corregido varios errores de ortografía. Es posible que queden algunos aún
