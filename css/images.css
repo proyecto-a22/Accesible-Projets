@@ -1,1 +1,38 @@
+/ --- CONFIGURACIÓN BASE PARA TODOS LOS PÓSTERES --- /
+.poster {
+width: 350px;           / Ancho definido /
+height: auto;           / Mantiene proporción /
+display: block;         / Permite centrado /
+margin: 20px auto;      / Centrado y espacio alrededor /
+border-radius: 5px;     / Bordes apenas redondeados /
+
+/ Sombra neutra profesional /
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+
+/ Efecto al pasar el cursor (opcional) /
+transition: transform 0.3s ease;
+}
+
+/ Efecto al pasar el mouse por encima de cualquier póster /
+.poster:hover {
+transform: scale(1.02);
+}
+
+/ --- CONFIGURACIÓN EXCLUSIVA PARA LA LUNA --- /
+.poster-luna {
+/ Aquí sobreescribimos la sombra para darle ese toque rojizo /
+box-shadow: 0 10px 25px rgba(180, 0, 0, 0.4);
+}
+
+/ --- CONFIGURACIÓN PARA EL RELICARIO --- /
+.poster-relicario {
+/ Sombra con un toque verde oscuro para resaltar el marco de la imagen /
+box-shadow: 0 10px 30px rgba(0, 100, 50, 0.5);
+
+/ Le quitamos un poco el borde redondeado para que se note mejor el marco de la imagen /
+border-radius: 0;
+
+/ Un borde fino para que resalte más el marco verde original de la imagen /
+border: 2px solid #1a3320;
+}
 
