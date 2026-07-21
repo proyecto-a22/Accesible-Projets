@@ -1,3 +1,9 @@
+01.38 - Mar, 21/07/2026
+• Se han actualizado todas las páginas del sitio, ya que hemos alojado el CSS en un directorio aparte, y hemos creado y modificado dos más.
+• Creado un nuevo css aparte, exclusivamente para el apartado de la isla de papel, y sus ficheros correspondientes.
+• Agregada las 3 imágenes de portada para los libros disponibles en dicho apartado. Esperamos que funcione y se vea bien.
+• Se agregó una breve descripción en cada imagen adjunta.
+• Se editó como habrán notado en el inicio de la página, una pequeña sección del encabezado uno. Se seguirá editando hacia el futuro, dándole algo más de relleno.
 23.09 - Dom, 12/07/2026
 • Modificada la página de descargas. Ahora está distribuída por sistema operatibo y colaboración
 • Se modificó el CSS corrigiendo código
