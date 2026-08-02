@@ -1,3 +1,8 @@
+03.13 - Dom, 02/08/2026
+• Modificado los nombres de cada página, para mejor distinción entre sí.
+• ¡Nueva actualización de adivina la palabra! Actual, v1.3. Toda info en su archivo de novedades.
+10.57 p.m - Juev, 30/07/2026
+• Corregido texto en el menú principal y en el botón del mismo.
 01.38 - Mar, 21/07/2026
 • Se han actualizado todas las páginas del sitio, ya que hemos alojado el CSS en un directorio aparte, y hemos creado y modificado dos más.
 • Creado un nuevo css aparte, exclusivamente para el apartado de la isla de papel, y sus ficheros correspondientes.
