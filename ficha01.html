@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Silencio en Fort Davis</title>
+<title>Silencio en Fort Davis — Proyectos Accesibles</title>
 
 <link rel="stylesheet" href="css/estilos.css">
 <link rel="stylesheet" href="css/images.css">
@@ -177,7 +177,7 @@ btn.textContent = "Menú contraído";
 btn.setAttribute("aria-expanded","false");
 }else{
 lista.classList.add("mostrar");
-btn.textContent = "Menú expandido";
+btn.textContent = "Menú";
 btn.setAttribute("aria-expanded","true");
 }
 
@@ -264,7 +264,7 @@ const btnSiguiente = document.getElementById("btnSiguiente");
 
 async function cargarLibro(){
 try{
-let res = await fetch("libros/silencio_en_Fort_Davis.txt");
+let res = await fetch("libros/Destinos_Cruzados.txt");
 let texto = await res.text();
 
 procesarTexto(texto);
