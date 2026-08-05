@@ -1,3 +1,6 @@
+00.14 - Mier, 05/08/2026
+• Nuevo juego disponible en el apartado descargas.
+• Se han modificado varias páginas reduciendo code inecesario
 03.13 - Dom, 02/08/2026
 • Modificado los nombres de cada página, para mejor distinción entre sí.
 • ¡Nueva actualización de adivina la palabra! Actual, v1.3. Toda info en su archivo de novedades.
