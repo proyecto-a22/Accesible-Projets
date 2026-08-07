@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 Página no encontrada - Proyectos Accesibles</title>
+
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<main>
+
+<div class="logo">
+¡Proyectos Accesibles!
+</div>
+
+<div class="relojbarra">
+<div id="hora"></div>
+<div id="fecha"></div>
+</div>
+
+<nav>
+
+<button id="menuBtn" aria-expanded="false">
+Menú
+</button>
+
+<ul id="menuLista">
+
+<li><a href="index.html">Inicio</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+<li><a href="descargas.html">Descargas</a></li>
+<li><a href="isla_de_papel.html">La isla de papel</a></li>
+<li><a href="lv_estudio13.html">Servicios LV estudios 13</a></li>
+<li><a href="minijuegos.html">Minijuegos web</a></li>
+<li><a href="novedades.html">Novedades</a></li>
+
+</ul>
+
+</nav>
+
+<div class="contenido">
+
+<h2>Sitio no encontrado</h2>
+
+<p>
+Esta página fue inavilitada para el uso público, o no existe en el sitio web.
+Puede regresar a la página principal desde el menú o cliqueando <a href="index.html"> aquí</a>
+</p>
+
+<footer>
+Proyectos accesibles - 2026
+</footer>
+
+</main>
+
+<script>
+
+/* =========================
+AUDIO
+========================= */
+
+let audioCtx = null;
+
+function activarAudio(){
+
+if(audioCtx) return;
+
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+}
+
+function sonido(freq,dur,vol){
+
+if(!audioCtx) return;
+
+let osc = audioCtx.createOscillator();
+let gain = audioCtx.createGain();
+
+osc.frequency.value = freq;
+gain.gain.value = vol;
+
+osc.connect(gain);
+gain.connect(audioCtx.destination);
+
+osc.start();
+
+setTimeout(()=>osc.stop(),dur);
+
+}
+
+function clickUI(){
+
+sonido(650,50,0.04);
+
+}
+
+["keydown","click","touchstart","pointerdown"].forEach(ev=>{
+
+document.addEventListener(ev,activarAudio,{once:true});
+
+});
+
+
+/* =========================
+SONIDO EN MENÚ
+========================= */
+
+document.querySelectorAll("#menuLista a").forEach(link=>{
+
+link.addEventListener("mouseenter",clickUI);
+
+link.addEventListener("focus",clickUI);
+
+});
+
+
+/* =========================
+MENÚ
+========================= */
+
+let btn = document.getElementById("menuBtn");
+let lista = document.getElementById("menuLista");
+
+btn.onclick = ()=>{
+
+let abierto = btn.getAttribute("aria-expanded") === "true";
+
+if(abierto){
+
+lista.classList.remove("mostrar");
+
+btn.textContent = "Menú contraído";
+
+btn.setAttribute("aria-expanded","false");
+
+}else{
+
+lista.classList.add("mostrar");
+
+btn.textContent = "Menú";
+
+btn.setAttribute("aria-expanded","true");
+
+}
+
+clickUI();
+
+};
+
+
+/* =========================
+RELOJ
+========================= */
+
+function actualizarReloj(){
+
+let ahora = new Date();
+
+let h = String(ahora.getHours()).padStart(2,"0");
+let m = String(ahora.getMinutes()).padStart(2,"0");
+
+document.getElementById("hora").textContent =
+"Hora: " + h + ":" + m;
+
+document.getElementById("fecha").textContent =
+ahora.toLocaleDateString();
+
+}
+
+setInterval(actualizarReloj,1000);
+
+actualizarReloj();
+
+</script>
+
+</body>
+</html>

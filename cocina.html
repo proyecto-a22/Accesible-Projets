@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La cocina accesible</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<main>
+<!-- Se cambió a H1 porque es el título principal de la web -->
+<h1 class="logo">¡Proyectos accesibles!</h1>
+
+<div class="relojbarra">
+<div id="hora" aria-live="polite"></div>
+<div id="fecha" aria-live="polite"></div>
+</div>
+
+<nav>
+<!-- El texto del botón se mantiene constante para no confundir al lector de pantalla -->
+<button id="menuBtn" aria-expanded="false" aria-controls="menuLista">
+Menú
+</button>
+
+<ul id="menuLista">
+<li><a href="index.html">Inicio</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+<li><a href="descargas.html">Descargas</a></li>
+<li><a href="isla_de_papel.html">La isla de papel</a></li>
+<li><a href="lv_estudio13.html">Servicios LV estudios 13</a></li>
+<li><a href="minijuegos.html">Minijuegos web</a></li>
+<li><a href="novedades.html">Novedades</a></li>
+</ul>
+</nav>
+
+<div class="contenido">
+<h2>La cocina accesible</h2>
+<p>Este apartado en concreto está complétamente destinado a compartir con el público no vidente, recetas de cocinas a partir de las simples, hasta llegar a las más elaboradas. Dejando medidas exactas con instrucciones paso a paso en su labor.</p>
+
+<h2>Área de recetas</h2>
+<p>Aquí debajo se encontrará la lista de las recetas disponibles.</p>
+
+<div class="chef-container">
+<!-- alt="" le dice a los lectores de pantalla que es decorativo -->
+<img src="images/chef.png" class="chef-visual" alt="" aria-hidden="true">
+
+<div class="chef-bubble">
+<h3 id="chef-titulo">¿Hambre de algo rápido?</h3>
+<p id="chef-mensaje">¡No digas más! El Chef C.A. tiene una receta perfecta para hoy.</p>
+<a href="#" id="chef-link" class="btn-receta">¡Ver Receta!</a>
+</div>
+</div>
+
+<table>
+<caption>Lista de recetas</caption>
+<tr>
+<th>Categoría</th>
+<th>Imagen del platillo</th>
+<th>Nombre</th>
+<th>Breve descripción</th>
+<th>Ver receta</th>
+</tr>
+</table>
+</div>
+
+<footer>
+Proyectos accesibles - 2026
+</footer>
+</main>
+
+<script>
+/ AUDIO /
+let audioCtx = null;
+function activarAudio() {
+if(audioCtx) return;
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+function sonido(freq, dur, vol) {
+if(!audioCtx) return;
+let osc = audioCtx.createOscillator();
+let gain = audioCtx.createGain();
+osc.frequency.value = freq;
+gain.gain.value = vol;
+osc.connect(gain);
+gain.connect(audioCtx.destination);
+osc.start();
+setTimeout(() => osc.stop(), dur);
+}
+function clickUI() { sonido(650, 50, 0.04); }
+
+["keydown", "click", "touchstart", "pointerdown"].forEach(ev => {
+document.addEventListener(ev, activarAudio, {once: true});
+});
+
+/ SONIDO MENÚ: Solo al hacer clic, no al pasar el mouse (evita sobrecarga) /
+document.querySelectorAll("#menuLista a").forEach(link => {
+link.addEventListener("click", clickUI);
+});
+
+/ MENÚ /
+let btn = document.getElementById("menuBtn");
+let lista = document.getElementById("menuLista");
+
+btn.onclick = () => {
+let abierto = btn.getAttribute("aria-expanded") === "true";
+if(abierto) {
+lista.classList.remove("mostrar");
+btn.setAttribute("aria-expanded", "false");
+} else {
+lista.classList.add("mostrar");
+btn.setAttribute("aria-expanded", "true");
+}
+clickUI();
+};
+
+/ RELOJ /
+function actualizarReloj() {
+let ahora = new Date();
+let h = String(ahora.getHours()).padStart(2, "0");
+let m = String(ahora.getMinutes()).padStart(2, "0");
+document.getElementById("hora").textContent = "Hora: " + h + ":" + m;
+// Forzamos el idioma español
+document.getElementById("fecha").textContent = ahora.toLocaleDateString('es-ES');
+}
+setInterval(actualizarReloj, 1000);
+actualizarReloj();
+</script>
+</body>
+</html>
