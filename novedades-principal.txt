@@ -1,3 +1,7 @@
+01.44 - Vie, 07/08/2026
+• Se ha modificado el menú del sitio , para hacerlo un poco más accesible.
+• Se a agregado una página por defecto, que será usada como 404 para que aún así el usuario permanezca en el sitio.
+• Se removió temporalmente la página de minijuegos, hasta que esté funcional.
 00.14 - Mier, 05/08/2026
 • Nuevo juego disponible en el apartado descargas.
 • Se han modificado varias páginas reduciendo code inecesario
