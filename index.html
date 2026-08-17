@@ -29,6 +29,8 @@ Menú
 
 <li><a href="index.html">Inicio</a></li>
 <li><a href="contacto.html">Contacto</a></li>
+<li><a href="https://www.youtube.com/channel/UC-LXec0HOAZSAhfLpBb-SPQ">Canal de youtube</a></li>
+<li><a href="https://www.tiktok.com/@lvestudios013?_r=1&_t=ZS-93cVQrnc9J9">Canal de TikTok</a></li>
 <li><a href="descargas.html">Descargas</a></li>
 <li><a href="isla_de_papel.html">La isla de papel</a></li>
 <li><a href="lv_estudio13.html">Servicios LV estudios 13</a></li>
@@ -62,12 +64,10 @@ e incluso proyectos en conjunto que desean ver la luz pronto.
 <div class="stats">
 
 <p>• Páginas: <span id="paginas">7</span></p>
-
 <p>• APK: <span id="apks">2</span></p>
-
 <p>• Windows: <span id="windows">2</span></p>
-
-<p>• Descargas: <span id="descargas">49</span></p>
+<p>• Descargas: <span id="descargas">57</span></p>
+<p>Visitas en el sitio: <strong id="contador"></strong></p>
 
 </div>
 
@@ -196,6 +196,19 @@ ahora.toLocaleDateString();
 setInterval(actualizarReloj,1000);
 
 actualizarReloj();
+
+const namespace = "principal";
+const key = "visitas-totales";
+const url = https://api.countapi.xyz/hit/${namespace}/${key};
+fetch(url)
+.then(response => response.json())
+.then(data => {
+document.getElementById('contador').innerText = data.value;
+})
+.catch(error => {
+document.getElementById('contador').innerText = "Error";
+console.error("No se pudo conectar con el contador:", error);
+});
 
 </script>
 
