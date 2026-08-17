@@ -67,7 +67,7 @@ e incluso proyectos en conjunto que desean ver la luz pronto.
 <p>• APK: <span id="apks">2</span></p>
 <p>• Windows: <span id="windows">2</span></p>
 <p>• Descargas: <span id="descargas">57</span></p>
-<p>Visitas en el sitio: <strong id="contador"></strong></p>
+<strong id="contador">Cargando...</strong>
 
 </div>
 
@@ -197,20 +197,8 @@ setInterval(actualizarReloj,1000);
 
 actualizarReloj();
 
-const namespace = "principal";
-const key = "visitas-totales";
-const url = https://api.countapi.xyz/hit/${namespace}/${key};
-fetch(url)
-.then(response => response.json())
-.then(data => {
-document.getElementById('contador').innerText = data.value;
-})
-.catch(error => {
-document.getElementById('contador').innerText = "Error";
-console.error("No se pudo conectar con el contador:", error);
-});
-
 </script>
 
+<script src="js/contador.js"></script>
 </body>
 </html>
