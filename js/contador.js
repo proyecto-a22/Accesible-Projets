@@ -1,27 +1,29 @@
-// Contador de visitas
-const namespace = "proyectos accesibles";
-const key = "visitas-totales";
+// Nombre de tu contador
+const workspace = "proyectos-accesibles";
+const counterName = "visitas-totales";
 
-// Endpoint de CounterAPI
-const url = `https://api.counterapi.dev/v1/${namespace}/${key}/up`;
+// Esperamos a que exista el elemento en la página
+document.addEventListener("DOMContentLoaded", function () {
 
-// Elemento donde se mostrará el contador
-const contador = document.getElementById("contador");
+    const contador = document.getElementById("contador");
 
-if (contador) {
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`);
-            }
+    if (!contador) {
+        console.error("No se encontró el elemento #contador.");
+        return;
+    }
 
-            return response.json();
+    // Crear el contador
+    const counter = new Counter({
+        workspace: workspace
+    });
+
+    // Registrar una visita y mostrar el nuevo total
+    counter.up(counterName)
+        .then(function (result) {
+            contador.textContent = result.value;
         })
-        .then(data => {
-            contador.textContent = data.count;
-        })
-        .catch(error => {
-            contador.textContent = "No disponible";
+        .catch(function (error) {
             console.error("No se pudo actualizar el contador:", error);
+            contador.textContent = "No disponible";
         });
-}
+});
